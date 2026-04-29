@@ -152,30 +152,53 @@ a {
 
 .brand-mark {
   align-items: center;
+  color: var(--color-text);
   display: inline-flex;
   gap: 12px;
+  max-width: 100%;
   min-width: 0;
 }
 
 .brand-symbol {
-  align-items: center;
-  aspect-ratio: 1;
-  background: linear-gradient(135deg, rgba(217, 20, 50, 0.22), rgba(255, 255, 255, 0.04));
-  border: 1px solid var(--color-red-line);
+  background: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.82);
   border-radius: 50%;
-  color: var(--color-red);
-  display: inline-flex;
-  flex: 0 0 auto;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 700;
-  justify-content: center;
-  width: 42px;
+  box-sizing: border-box;
+  box-shadow:
+    0 0 0 1px rgba(217, 20, 50, 0.18),
+    0 8px 22px rgba(0, 0, 0, 0.24);
+  display: grid;
+  flex: 0 0 34px;
+  flex-basis: 34px;
+  height: 34px;
+  min-height: 34px;
+  min-width: 34px;
+  overflow: hidden;
+  padding: 1px;
+  place-items: center;
+  width: 34px;
+}
+
+.brand-symbol img {
+  height: 100%;
+  max-width: none;
+  object-fit: contain;
+  object-position: center;
+  transform: scale(1.05);
+  transform-origin: center;
+  width: 100%;
+}
+
+.brand-text {
+  align-items: baseline;
+  display: flex;
+  gap: 6px;
+  min-width: 0;
 }
 
 .brand-mark strong,
 .brand-mark small {
-  display: block;
+  display: inline;
   white-space: nowrap;
 }
 
@@ -183,6 +206,15 @@ a {
   font-family: var(--font-display);
   font-size: 14px;
   line-height: 1.2;
+}
+
+.brand-mark strong::after {
+  color: var(--color-muted);
+  content: " /";
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 400;
+  margin-left: 4px;
 }
 
 .brand-mark small {
@@ -1579,6 +1611,10 @@ h2 {
     top: 10px;
   }
 
+  .brand-mark {
+    max-width: calc(100% - 66px);
+  }
+
   .menu-toggle {
     display: block;
     position: relative;
@@ -1894,16 +1930,45 @@ h2 {
 }
 
 @media (max-width: 520px) {
+  .brand-mark {
+    gap: 10px;
+  }
+
+  .brand-text {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .brand-mark strong,
   .brand-mark small {
-    display: none;
+    display: block;
+    white-space: nowrap;
   }
 
   .brand-mark strong {
     font-size: 0.78rem;
   }
 
+  .brand-mark strong::after {
+    content: " /";
+    margin-left: 3px;
+  }
+
+  .brand-mark small {
+    font-size: 0.58rem;
+    line-height: 1.15;
+  }
+
   .brand-symbol {
-    width: 38px;
+    flex: 0 0 32px;
+    flex-basis: 32px;
+    height: 32px;
+    min-height: 32px;
+    min-width: 32px;
+    padding: 1px;
+    width: 32px;
   }
 
   .hero-visual {
